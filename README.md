@@ -6,33 +6,33 @@ Wir haben im ersten Aufschlag einmal die Daten in [R](http://www.r-project.org/)
 
 ## Ergebnisse
 
-!(/img/ackerstr.png)
+![Ackerstraße](/img/ackerstr.png)
 
-!(/img/aubruchsweg.png "Hatten da abends Kinder Spaß, die Messanlage zu foppen?")
+![Aubruchsweg](/img/aubruchsweg.png "Hatten da abends Kinder Spaß, die Messanlage zu foppen?")
 
-!(/img/boschheideweg.png)
+![Boschheideweg](/img/boschheideweg.png)
 
-!(/img/endstr.png)
+![Endstraße](/img/endstr.png)
 
-!(/img/eupenerstr.png "Das ist _viel_ Verkehr!")
+![Eupener Straße](/img/eupenerstr.png "Das ist _viel_ Verkehr!")
 
-!(/img/friedenstr.png "Der Median liegt bei 38 km/h, das 3. Quartil bei 43 km/h!")
+![Friedenstraße](/img/friedenstr.png "Der Median liegt bei 38 km/h, das 3. Quartil bei 43 km/h!")
 
-!(/img/kirchweg.png)
+![Kirchweg](/img/kirchweg.png)
 
-!(/img/kirschenallee.png)
+![Kirschenallee](/img/kirschenallee.png)
 
-!(/img/landwehrstr.png)
+![Landwehrstraße](/img/landwehrstr.png)
 
-!(/img/pattbergstr.png)
+![Pattbergstraße](/img/pattbergstr.png)
 
-!(/img/roemerstr.png)
+![Römerstraße](/img/roemerstr.png)
 
-!(/img/ruhrstr.png "Wieder spielende Kinder? ;)")
+![Ruhrstraße](/img/ruhrstr.png "Wieder spielende Kinder? ;)")
 
-!(/img/taubenstr.png "Hier liegt der Median gar bei 42 km/h…")
+![Taubenstraße](/img/taubenstr.png "Hier liegt der Median gar bei 42 km/h…")
 
-!(/img/vinnerstr.png)
+![Vinner Straße](/img/vinnerstr.png)
 
 ## Team
 
