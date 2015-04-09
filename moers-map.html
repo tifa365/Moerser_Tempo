@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>My first Leaflet</title>
+	<title>Moerser Tempo</title>
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-	<link rel="stylesheet" type="text/css" href="my-map.css" />
+	<link rel="stylesheet" type="text/css" href="moers-map.css" />
 	<script type='text/javascript' src="messstellen.geojson"></script>
 </head>
 <body>
 	<div id="map"></div>
 	<script type='text/javascript' src="moers-map.js"></script>
-	<script type='text/javascript'>
-		L.geoJson(messstellen).addTo(map);
-	</script>
+<!--	<script type='text/javascript'>-->
+<!--		L.geoJson(messstellen, {-->
+<!--			onEachFeature: onEachFeature-->
+<!--		}).addTo(map).on('click', onClick);-->
+<!--	</script>-->
 </body>
 </html>
 
