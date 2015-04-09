@@ -1,0 +1,174 @@
+var messstellen = {
+	"type": "FeatureCollection",
+	"features": [
+	{
+		"type": "Feature",
+		"properties":
+		{
+			"name": "Ackerstrasse 40",
+			"speed": 30,
+			"date": 05112014
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [6.644433,51.42632]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"name": "Aubruchsweg 22-24",
+			"speed": 30,
+			"date": 20102014
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [6.621842,51.416336]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"name": "Boschheideweg 36",
+			"speed": 30,
+			"date": 24112014
+		},
+		
+		"geometry": {
+			"type": "Point",
+			"coordinates": [6.619006,51.40041]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"name": "Endstrasse 17",
+			"speed": 50,
+			"date": 03112014
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [6.600783,51.468336]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"name": "Eupener Strasse 2a",
+			"speed": 30,
+			"date": 22102014
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [6.644539,51.458262]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"name": "Friedenstrasse 5",
+			"speed": 30,
+			"date": 14052014
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [6.627125,51.474335]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"name": "Kirchweg 5",
+			"speed": 30,
+			"date": 08122014
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [6.658071,51.420402]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"name": "Kirschenallee 33",
+			"speed": 30,
+			"date": 28082014,
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [6.650967,51.454701]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"name": "Landwehrstrasse 57",
+			"speed": 30,
+			"date": 15122014
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [6.633913,51.454597]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"name": "Pattbergstrasse 12-16",
+			"speed": 50,
+			"date": 03122014
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [6.590472,51.498114]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"name": "Römerstrasse 501",
+			"speed": 30,
+			"date": 04062014
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [6.652176,51.461874]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"name": "Ruhrstrasse 58",
+			"speed": 30,
+			"date": 14042014
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [6.64129,51.456132]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"name": "Taubenstrasse 9",
+			"speed": 30,
+			"date": 01122014
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [6.65624,51.466082]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"name": "Vinner Strasse 42",
+			"speed": 30,
+			"date": 27102014
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [6.641659,51.440982]
+		}
+	}
+	]};
