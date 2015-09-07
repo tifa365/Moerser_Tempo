@@ -34,6 +34,10 @@ Wir haben im ersten Aufschlag einmal die Daten in [R](http://www.r-project.org/)
 
 ![Vinner Straße](/img/vinnerstr.png)
 
+## Wie macht man sowas?
+
+
+
 ## Team
 
  * Juliane [@gruenzeug](https://twitter.com/gruenzeug) Wessalowski

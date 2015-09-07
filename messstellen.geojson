@@ -6,7 +6,7 @@ var messstellen = {
 		"properties":
 		{
 			"name": "Ackerstrasse 40",
-			"speed": "Zone 30",
+			"speed": "30",
 			"date": "5.11.2014",
 			"pic": "ackerstr.png"
 		},
@@ -19,7 +19,7 @@ var messstellen = {
 		"type": "Feature",
 		"properties": {
 			"name": "Aubruchsweg 22-24",
-			"speed": "Zone 30",
+			"speed": "30",
 			"date": "20.10.2014",
 			"pic": "aubruchsweg.png"
 		},
@@ -32,7 +32,7 @@ var messstellen = {
 		"type": "Feature",
 		"properties": {
 			"name": "Boschheideweg 36",
-			"speed": "Zone 30",
+			"speed": "30",
 			"date": "24.11.2014",
 			"pic": "boschheideweg.png"
 		},
@@ -46,7 +46,7 @@ var messstellen = {
 		"type": "Feature",
 		"properties": {
 			"name": "Endstrasse 17",
-			"speed": "Zone 50",
+			"speed": "50",
 			"date": "03.11.2014",
 			"pic": "endstr.png"
 		},
@@ -59,7 +59,7 @@ var messstellen = {
 		"type": "Feature",
 		"properties": {
 			"name": "Eupener Strasse 2a",
-			"speed": "Zone 30",
+			"speed": "30",
 			"date": "22.10.2014",
 			"pic": "eupenerstr.png"
 		},
@@ -72,7 +72,7 @@ var messstellen = {
 		"type": "Feature",
 		"properties": {
 			"name": "Friedenstrasse 5",
-			"speed": "Zone 30",
+			"speed": "30",
 			"date": "14.05.2014",
 			"pic": "friedenstr.png"
 		},
@@ -85,7 +85,7 @@ var messstellen = {
 		"type": "Feature",
 		"properties": {
 			"name": "Kirchweg 5",
-			"speed": "Zone 30",
+			"speed": "30",
 			"date": "08.12.2014",
 			"pic": "kirchweg.png"
 		},
@@ -98,7 +98,7 @@ var messstellen = {
 		"type": "Feature",
 		"properties": {
 			"name": "Kirschenallee 33",
-			"speed": "Zone 30",
+			"speed": "30",
 			"date": "28.08.2014",
 			"pic": "kirschenallee.png"
 		},
@@ -111,7 +111,7 @@ var messstellen = {
 		"type": "Feature",
 		"properties": {
 			"name": "Landwehrstrasse 57",
-			"speed": "Zone 30",
+			"speed": "30",
 			"date": "15.12.2014",
 			"pic": "landwehrstr.png"
 		},
@@ -124,7 +124,7 @@ var messstellen = {
 		"type": "Feature",
 		"properties": {
 			"name": "Pattbergstrasse 12-16",
-			"speed": "Zone 50",
+			"speed": "50",
 			"date": "3.12.2014",
 			"pic": "pattbergstr.png"
 		},
@@ -137,7 +137,7 @@ var messstellen = {
 		"type": "Feature",
 		"properties": {
 			"name": "Römerstrasse 501",
-			"speed": "Zone 30",
+			"speed": "30",
 			"date": "4.6.2014",
 			"pic": "roemerstr.png"
 		},
@@ -150,7 +150,7 @@ var messstellen = {
 		"type": "Feature",
 		"properties": {
 			"name": "Ruhrstrasse 58",
-			"speed": "Zone 30",
+			"speed": "30",
 			"date": "14.4.2014",
 			"pic": "ruhrstr.png"
 		},
@@ -163,7 +163,7 @@ var messstellen = {
 		"type": "Feature",
 		"properties": {
 			"name": "Taubenstrasse 9",
-			"speed": "Zone 30",
+			"speed": "30",
 			"date": "1.12.2014",
 			"pic": "taubenstr.png"
 		},
@@ -176,7 +176,7 @@ var messstellen = {
 		"type": "Feature",
 		"properties": {
 			"name": "Vinner Strasse 42",
-			"speed": "Zone 30",
+			"speed": "30",
 			"date": "27.10.2014",
 			"pic": "vinnerstr.png"
 		},

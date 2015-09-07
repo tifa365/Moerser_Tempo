@@ -11,11 +11,11 @@ function onEachFeature(feature, layer) {
 	//
 	if (feature.properties){
 		var popup = '';
-		if(feature.properties.name) { popup = popup + feature.properties.name;}
-		if(feature.properties.speed) { popup = popup + '<br>' + feature.properties.speed;}
-		if(feature.properties.date) { popup = popup + '<br>Start der Messung ' + feature.properties.date;}
-		if(feature.properties.pic) { popup = popup + '<br><img src="img/' + feature.properties.pic + '" width="200">';}
-		layer.bindPopup(popup);
+		if(feature.properties.name) { popup = popup + '<h1>' + feature.properties.name + '</h1>';}
+		if(feature.properties.speed) { popup = popup + '<img src="img/' + feature.properties.speed + '.svg" width="40px" alt="Erlaubte Geschwindigkeit: '+ feature.properties.speed + '">';}
+		if(feature.properties.pic) { popup = popup + '<br><img src="img/' + feature.properties.pic + '" width="720px">';}
+		if(feature.properties.date) { popup = popup + '<br>Start der letzten Messung ' + feature.properties.date;}
+		layer.bindPopup(popup, {maxWidth: 1000});
 		layer.on('click', onClick);
 	}
 }
