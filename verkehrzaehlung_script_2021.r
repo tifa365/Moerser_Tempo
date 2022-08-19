@@ -6,9 +6,7 @@ library(grid)
 library(RColorBrewer)
 library(stringr)
 library(dplyr)
-require(purrr)  
-library(httr)
-library(jsonlite)
+require(purrr)
 
 # Collect all street_data files inside folder to import dataframes
 raw_files_list <- list.files('data/verkehrszaehlung_2021')

@@ -4,15 +4,15 @@ library(scales)
 library(grid)
 library(RColorBrewer)
 library(stringr)
-library(dplyr)
+library(tidyverse)
 require(purrr)  # for map(), reduce()
 
 # Collect all street_data files inside folder to import dataframes
-raw_files_list <- list.files('data/verkehrszaehlung_2020')
+raw_files_list <- list.files('data/verkehrszaehlung_2017')
 
 # Add the full path of files to list
 pastedata <- function(.x) {
-  return(paste0("./data/verkehrszaehlung_2020/", .x))
+  return(paste0("./data/verkehrszaehlung_2017/", .x))
 }
 
 # Add full path to list for following mass import
@@ -94,7 +94,7 @@ plot_list <- list(Ackerstrasse = ackerstrasse, Aubruchsweg = aubruchsweg, Endstr
                   Roemerstrasse = roemerstrasse, Ruhrstrasse= ruhrstrasse, Taubenstrasse = taubenstrasse, Vinner_strasse = vinner_strasse)
 
 # Save each plot in the list by name
-iwalk(plot_list, ~ ggsave(glue::glue("{.y}.png"), .x, device = "png",  width=8, height=4, dpi=300, path = "./images/2020"))
+iwalk(plot_list, ~ ggsave(glue::glue("{.y}.png"), .x, device = "png",  width=8, height=4, dpi=300, path = "./images/2017"))
 
 ##############################Other_Approach###############################
 
