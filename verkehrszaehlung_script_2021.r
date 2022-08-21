@@ -93,4 +93,4 @@ plot_street <- function(dataframe_street, label) {
 plot_list <- imap(lst_of_street_dataframes, ~ plot_street(.x, .y))
 
 # Save each plot in the list by name
-#iwalk(plot_list, ~ ggsave(glue::glue("{.y}.png"), .x, device = "png",  width=8, height=4, dpi=300, path = "./images/2021"))
+iwalk(plot_list, ~ ggsave(glue::glue("{.y}.png"), .x, device = "png",  width=8, height=4, dpi=300, path = "./images/2021"))
