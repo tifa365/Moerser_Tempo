@@ -20,6 +20,8 @@ pastedata <- function(.x) {
 # Add full path to list for following mass import
 raw_file_paths <- map(raw_files_list, pastedata)
 
+
+
 # Ascribe street names to the returned dataframes
 prepare_street_data_for_viz <- function(dataset_path) {
   # read in dataframe
@@ -32,23 +34,35 @@ prepare_street_data_for_viz <- function(dataset_path) {
 }
 
 # Create a list of returned dataframe
-lst_of_street_dataframes <- map(raw_file_paths, prepare_street_data_for_viz)
+lst_of_places_dataframes <- map(raw_file_paths, prepare_street_data_for_viz)
 
-# Get name of df
+# Get street name of df
 receive_title_of_dataframe <- function(.x) {
-  name <-strsplit(strsplit(.x, "/")[[1]][4], "_")[[1]][1]
+  name <-strsplit(strsplit(.x, "/")[[1]][4], "-")[[1]][1]
   return(name)
 }
 
-# Create list of dataframe names
+# Create list of dataframe street names
 raw_name_list <- map(raw_file_paths, receive_title_of_dataframe)
 
-# Name all dataframes from the extracted file list
-names(lst_of_street_dataframes) <- raw_name_list
+# Create new list for merged df
+lst_of_street_dataframes <- list()
+i <- 0
+
+# Add or merge data
+for (place in raw_name_list) {
+  i <- i+1
+
+  if(raw_name_list[[i]] %in% names(lst_of_street_dataframes)) {
+    lst_of_street_dataframes[[raw_name_list[[i]]]] <- vctrs::vec_c(lst_of_street_dataframes[[raw_name_list[[i]]]], lst_of_places_dataframes[[i]])
+  } else {
+    lst_of_street_dataframes[[raw_name_list[[i]]]] <- lst_of_places_dataframes[[i]]
+  }
+}
 
 # Create better readable street name
 readable_street <- function (name) {
-  removed_dashes <- gsub("[-]", " ", name)
+  removed_dashes <- gsub("[_]", " ", name)
   upper_first_name <- paste0(toupper(substr(removed_dashes, 1, 1)), substr(removed_dashes, 2, nchar(removed_dashes)))
   ss_to_sz <- gsub("trasse", "traße", upper_first_name)
   street_upper <- gsub(" straße", " Straße", ss_to_sz)
@@ -79,4 +93,4 @@ plot_street <- function(dataframe_street, label) {
 plot_list <- imap(lst_of_street_dataframes, ~ plot_street(.x, .y))
 
 # Save each plot in the list by name
-iwalk(plot_list, ~ ggsave(glue::glue("{.y}.png"), .x, device = "png",  width=8, height=4, dpi=300, path = "./images/2021"))
+#iwalk(plot_list, ~ ggsave(glue::glue("{.y}.png"), .x, device = "png",  width=8, height=4, dpi=300, path = "./images/2021"))
