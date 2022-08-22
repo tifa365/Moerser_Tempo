@@ -6,6 +6,7 @@ library(grid)
 library(RColorBrewer)
 library(stringr)
 library(dplyr)
+library(tidyverse)
 require(purrr)
 
 # Collect all street_data files inside folder to import dataframes
@@ -19,12 +20,13 @@ pastedata <- function(.x) {
 # Add full path to list for following mass import
 raw_file_paths <- map(raw_files_list, pastedata)
 
+
+
 # Ascribe street names to the returned dataframes
 prepare_street_data_for_viz <- function(dataset_path) {
-  df_name <- strsplit(strsplit(dataset_path,"_")[[1]][1], "/")[[1]][3]
   # read in dataframe
   df <-  read_delim(dataset_path, col_names = FALSE, delim = ";", col_types = cols(.default = "i", X1 = "c", X5 = 'c'))
-  colnames(df) = c("date","place","tempo","length","direction")
+  colnames(df) <- c("date", "place", "tempo", "length", "direction")
   df$tempoclass <- cut(df$tempo, breaks = c(0,30,36,Inf), labels=c("<30 km/h", "30–36 km/h", ">36 km/h"))
   df$vehicleclass <-cut(df$length, breaks = c(0,8,12, Inf), labels=c("PKW", "LKW", "Lastzug"))
   df$datetime <- as.POSIXct(df$date,format="%d.%m.%y %H:%M:%S")
@@ -32,22 +34,45 @@ prepare_street_data_for_viz <- function(dataset_path) {
 }
 
 # Create a list of returned dataframe
-lst_of_street_dataframes <- map(raw_file_paths, prepare_street_data_for_viz)
+lst_of_places_dataframes <- map(raw_file_paths, prepare_street_data_for_viz)
 
-# Get name of df
+# Get street name of df
 receive_title_of_dataframe <- function(.x) {
-  name <- strsplit(strsplit(.x, "_")[[1]][1], "/")[[1]][3]
+  name <-strsplit(strsplit(.x, "/")[[1]][4], "-")[[1]][1]
   return(name)
 }
 
-# Create list of dataframe names
+# Create list of dataframe street names
 raw_name_list <- map(raw_file_paths, receive_title_of_dataframe)
 
-# Name all dataframes from the extracted file list
-names(lst_of_street_dataframes) = raw_name_list
+# Create new list for merged df
+lst_of_street_dataframes <- list()
+i <- 0
+
+# Add or merge data
+for (place in raw_name_list) {
+  i <- i+1
+
+  if(raw_name_list[[i]] %in% names(lst_of_street_dataframes)) {
+    lst_of_street_dataframes[[raw_name_list[[i]]]] <- vctrs::vec_c(lst_of_street_dataframes[[raw_name_list[[i]]]], lst_of_places_dataframes[[i]])
+  } else {
+    lst_of_street_dataframes[[raw_name_list[[i]]]] <- lst_of_places_dataframes[[i]]
+  }
+}
+
+# Create better readable street name
+readable_street <- function (name) {
+  removed_dashes <- gsub("[_]", " ", name)
+  upper_first_name <- paste0(toupper(substr(removed_dashes, 1, 1)), substr(removed_dashes, 2, nchar(removed_dashes)))
+  ss_to_sz <- gsub("trasse", "traße", upper_first_name)
+  street_upper <- gsub(" straße", " Straße", ss_to_sz)
+  return(
+    paste("Geschwindigkeitsmessung im/in der", street_upper)
+  )
+}
 
 # Plot individual street
-plot_street <- function(dataframe_street) { 
+plot_street <- function(dataframe_street, label) {
   ggplot(dataframe_street, aes(x=datetime, y=tempo, colour = tempoclass)) +
     #Punkte sind semitransparent, Größe abhängig von der Fahrzeugklasse
     geom_point(alpha=0.2, aes(size=vehicleclass)) +
@@ -60,52 +85,12 @@ plot_street <- function(dataframe_street) {
     # Trendlinie mit Generalized Additive Model, siehe http://minimaxir.com/2015/02/ggplot-tutorial/
     geom_smooth(alpha=0.25, color="black", fill="black") +
     guides(colour = guide_legend(override.aes = list(size=5 ,alpha=1))) +
-    scale_x_datetime(labels = date_format("%d.%m %H:%M"))
+    scale_x_datetime(labels = date_format("%d.%m %H:%M")) +
+    labs(title=readable_street(label), x="Zeit", y="Geschwindigkeit", size="Fahrzeugart")
 }
 
 # Create a list of all plots to save
-all_plots <- map(lst_of_street_dataframes, ~ plot_street(.x))
-
-# Function to add different titles to plot
-add_titles_to_plot <-function(plot, title_as_string) {
-  plot +
-    labs(title=paste("Geschwindigkeitsmessung im/in der", title_as_string), x="Zeit", y="Geschwindigkeit", size="Fahrzeugart")
-}
-
-# Manually add titles to plots (code for 2020)
-# ackerstrasse <- add_titles_to_plot(all_plots[[1]], "Ackerstrasse")
-# aubruchsweg <- add_titles_to_plot(all_plots[[2]], "Aubruchsweg")
-# boschheideweg <- add_titles_to_plot(all_plots[[3]], "Boschheideweg")
-# endstrasse <- add_titles_to_plot(all_plots[[4]], "Endstrasse")
-# eupener_strasse <- add_titles_to_plot(all_plots[[5]], "Eupener Strasse")
-# friedensstrasse <- add_titles_to_plot(all_plots[[6]], "Friedensstrasse")
-# kirchweg <- add_titles_to_plot(all_plots[[7]], "Kirchweg")
-# kirschenallee <- add_titles_to_plot(all_plots[[8]], "Kirschenallee")
-# landwehrstrasse <- add_titles_to_plot(all_plots[[9]], "Landwehrstrasse")
-# pattbergstrasse <- add_titles_to_plot(all_plots[[10]], "pattbergstrasse")
-# roemerstrasse <- add_titles_to_plot(all_plots[[11]], "Römerstrasse")
-# ruhrstrasse <- add_titles_to_plot(all_plots[[12]], "Ruhrstrasse")
-# taubenstrasse <- add_titles_to_plot(all_plots[[13]], "Taubenstrasse")
-# vinner_strasse <- add_titles_to_plot(all_plots[[14]], "Vinner Strasse")
-
-
-# Create named list of plots to save plots all at once
-plot_list <- list(Ackerstrasse = ackerstrasse, Aubruchsweg = aubruchsweg, Endstrasse = endstrasse, Eupenerstrassee = eupener_strasse,
-                  Friedensstrasse = friedensstrasse, Kirchweg = kirchweg, Kirschenallee =kirschenallee, Landwehrstrasse = landwehrstrasse,
-                  Roemerstrasse = roemerstrasse, Ruhrstrasse= ruhrstrasse, Taubenstrasse = taubenstrasse, Vinner_strasse = vinner_strasse)
+plot_list <- imap(lst_of_street_dataframes, ~ plot_street(.x, .y))
 
 # Save each plot in the list by name
 iwalk(plot_list, ~ ggsave(glue::glue("{.y}.png"), .x, device = "png",  width=8, height=4, dpi=300, path = "./images/2021"))
-
-##############################Other_Approach###############################
-
-# # All single dataframes are combined into one, easier to save and create facet
-# combined_street_dataframe <- dplyr::bind_rows(lst_of_street_dataframes, .id = "keys") |> 
-#   # Capitalize street names
-#   mutate(keys = str_to_title(keys, locale = "de")) |> 
-#   # Change second part of lost street name
-#   mutate(keys = replace(keys, keys == 'Eupener', 'Eupener Strasse'))# ("Eupepener", "Eupener Strasse", keys))
-# 
-# # Make streets uppercase
-# combined_street_dataframe <- combined_street_dataframe |> 
-#   mutate(keys, funs=toupper)
